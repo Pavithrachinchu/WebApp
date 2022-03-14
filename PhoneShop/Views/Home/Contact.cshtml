@@ -1,0 +1,50 @@
+﻿@model PhoneShop.Models.Home.HomeContactViewModel
+@{
+    ViewBag.Title = "Categories";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Content/Homedesign.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Categories</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row product-container">
+        @foreach (var item in Model.ListOfCategories)
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom: 8px">
+                <div class="thumbnail product-item" style="height:70px">
+                    
+
+                    <div class="caption" style="text-align:center">
+                        <h2 style="font-size:18px">@item.CategoryName</h2>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+    <div class="olContent f1"> <h2 style="color:black">Search Product by Category</h2></div>
+    <div class="olSearch fr">
+        <input type="text" placeholder="Enter Category Name" name="searchKey" class="inputComn houseText form-control" />
+        <div class="searchIcon">
+            <button type="button" class="searchBtn">GO</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+

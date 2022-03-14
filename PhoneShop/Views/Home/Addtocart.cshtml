@@ -1,0 +1,28 @@
+﻿@model PhoneShop.DAL.Tbl_Product
+@{
+    ViewBag.Title = "Addtocart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <img style="min-height:200px; width:200px;" src="@Model.ProduuctImage"/>
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <h1>Product Name :@Model.ProductName</h1>
+                <h2>Price: @Model.Price</h2>
+                <h6>Description: @Model.Description</h6>
+
+                <input type="number" name="qty" value="1" id="qty" />
+
+                <input type="submit" value="Add to cart" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+

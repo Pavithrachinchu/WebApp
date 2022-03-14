@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["cart"]!=null)
+            {
+               <table class="table table-responsive">
+                   <thead>
+                       <tr>
+                           <th>ID</th>
+                           <th>NAME</th>
+                           <th>PRICE</th>
+                           <th>QUANTITY</th>
+                           <th>BILL</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       @foreach(var item in TempData["cart"] as List<PhoneShop.Models.cart>)
+                {
+                           <tr>
+                               <td>@item.productid</td>
+                               <td>@item.productname</td>
+                               <td>@item.price</td>
+                               <td>@item.qty</td>
+                               <td>@item.bill</td>
+                           </tr>
+
+                }
+                   </tbody>
+               </table>
+               <button type="submit"><a href="../Home/OrderDetails">Order</a></button>
+            }
+            else
+            {
+                <h2 style="color:red">Cart is Empty!</h2>
+                @Html.ActionLink("Go Back","About","Home")
+            }
+

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PhoneShop.DAL.Tbl_Product>
+
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <title>Product</title>
+</head>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="../Admin/Dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item active">Products</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Product Details
+        <a href="../Admin/ProductAdd" class="btn btn-info pull-right"><i class="fa fa-plus"></i>Add New</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="10">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Product Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Select((x,i)=>new { Data = x, Index = i }))
+                    {
+                        
+                        <tr>
+                            <td>@(item.Index+1)</td>
+                            <td>@item.Data.ProductName</td>
+                            <td>
+                                
+                                @Html.ActionLink("Edit","ProductEdit", new { productId = item.Data.ProductId })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

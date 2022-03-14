@@ -1,0 +1,75 @@
+﻿@model PhoneShop.Models.Home.HomeAboutViewModel
+
+@{
+    ViewBag.Title = "Our Products";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href="~/Content/Homedesign.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h2>Our Products</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row product-container">
+        @foreach (var item in Model.ListOfProducts)
+        {
+            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom: 8px">
+                <div class="thumbnail product-item" style="height:300px">
+                    <img class="img-responsive"
+                         style="cursor:pointer;height:160px;width:100%"
+                         src="~/UserProduct/@item.ProduuctImage" />
+
+                    <div class="caption">
+                        <h5>@item.ProductName -<i style="font-size:12px">@item.Description</i></h5>
+                        <p>@item.Price</p>
+                        <p>
+                            @if (item.Quantity > 0)
+                             {
+
+
+                                if (Session["UserNameSS"] != null)
+                                {
+                                    <span style="float:right!important">
+                                        @Html.ActionLink("Add to cart", "Addtocart", new { id = item.ProductId })
+                                    </span>
+                                <p>Available</p>
+                                }
+                                else
+                                {
+                                <span style="float:right!important">
+                                    @Html.ActionLink("Add to cart", "Login","Home")
+                                </span>
+                                <p>Available</p>
+                                }
+                             }
+                            else
+                            {
+                                <p>Out of Stock</p>
+                            }
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+</body>
+
+</html>
+
+
+
